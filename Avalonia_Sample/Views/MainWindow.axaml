@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Avalonia_Sample.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rootns="clr-namespace:Avalonia_Sample"
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="768"
+        x:Class="Avalonia_Sample.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Avalonia_Sample"
+        Width="1024"
+        Height="768">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+
+    <DockPanel>
+        <Grid>
+            <Grid ColumnDefinitions="*,Auto">
+                <rootns:MainWindowGLRendering Focusable="True" Name="MyControl" SelectedColor="{Binding SelectedColor}"/>
+
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock>Color Picker</TextBlock>
+                    <ColorPicker Width="200" Height="30" Name="colorPicker" HorizontalAlignment="Right" Color="{Binding SelectedColor, Mode=TwoWay}"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+
+        
+    </DockPanel>
+</Window>
